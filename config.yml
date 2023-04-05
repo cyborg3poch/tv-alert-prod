@@ -1,0 +1,43 @@
+files:
+  input: epoch_alerts.csv
+  exclude: blacklist.csv
+tradingview:
+  # The chart which has the indicator you'd like to use
+  chartUrl: https://in.tradingview.com/chart/rDHsJd0o/
+  # (optional) set the chart interval before adding pairs, otherwise interval of last saved chart is used
+  # examples: 1s | 30s | 1m | 15m | 1h | 1D | 1M      # NOTE: '1h,4h' to add alerts across multiple intervals
+  interval: 4h
+  # Optionally supply login details or login manually once and restart script
+  #username: JimmyJohnson
+  #password: SuperSecret
+alert:
+  condition: # tertiary/quaternary rows might not exist for your indicator. If not remove those values
+    primaryLeft: Supertrend (10, 3)
+    primaryRight: Plot
+    secondary: Crossing
+    tertiaryLeft: Value
+    tertiaryRight: 0.00001
+    quaternaryLeft:
+    quaternaryRight:
+  option: Only Once
+  actions:
+    notifyOnApp: false
+    showPopup: false
+    sendEmail: false
+    webhook:
+      enabled: true
+      url: "http://3.144.104.225/webhook"
+    playSound:
+      enabled: false
+      name: "Thin"
+      duration: "Once"
+  # alert name is optional - can override in csv if you add a "name" column. can use {{symbol|base|quote}}
+  # name: "MI dev3 for {{base}} {{quote}}"
+  # indentation matters! {{quote}} and {{base}} are swapped out for quote asset(eg. USDT) and the base (eg. BTC)
+  message: >
+    {
+    "key":"nox%&T64TA$S",
+    "telegram":"-1001988278062",
+    "discord":"1085487836905603082/s2Yhwl5yOtEtqBuZWtEgs7YbfiajsWRfUZK0dhH_lzDHXpDvg10qYdV8cLteCaNspXMa",
+    "msg":"TESTING MASS ALERT"
+    }
